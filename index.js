@@ -49,30 +49,10 @@ app.use(express.json());
 app.get(
   "/",
   (req, res) => {
-    res.send().json({
-      hotls: "data",
+    res.send({
+      hotls: data,
     });
   },
-  () => {}
-);
-app.post(
-  "/register",
-  (req, res, next) => {
-    // console.log(req);
-
-    const { name, ingredients, calories } = req.body;
-
-    if (name == "" || ingredients == "" || calories == "") {
-      res.send("Invalid request");
-    }
-
-    next();
-  },
-
-  (req, res) => {
-    const { name, ingredients, calories } = req.body;
-    res.send({ name, ingredients, calories });
-  }
 );
 
 app.listen(7000, () => {
